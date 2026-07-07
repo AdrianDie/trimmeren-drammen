@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trimmernakademiet | Lær å klippe – barberkurs i Drammen</title>
+  <meta name="description" content="Trimmernakademiet: lær herreklipp, fade og skjeggstell av barbererne hos Trimmeren i Drammen. Helgekurs, grunnkurs og fordypning. Meld deg på i dag." />
+  <meta property="og:title" content="Trimmernakademiet | Barberkurs i Drammen" />
+  <meta property="og:description" content="Lær faget av barbererne hos Trimmeren. Praktiske kurs i klipp, fade og skjeggstell på Svelvikveien i Drammen." />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            gold: '#8FB6D6',
+            'gold-light': '#BCDAF0',
+            dark: '#0B0E12',
+            'dark-2': '#13171D',
+            'dark-3': '#191E25',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('reveal-ready');
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #0B0E12; color: #E6EBF0; font-family: 'Inter', sans-serif; margin: 0; }
+    .font-display { font-family: 'Manrope', sans-serif; }
+    a { -webkit-tap-highlight-color: transparent; }
+
+    /* Nav */
+    .nav-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 0 6%; height: 66px; display: flex; align-items: center; justify-content: space-between; transition: background 0.3s, border-color 0.3s; border-bottom: 1px solid transparent; }
+    .nav-bar.scrolled { background: rgba(11,14,18,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(143,182,214,0.15); }
+    .nav-logo { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; color: #8FB6D6; text-decoration: none; }
+    .nav-cta { background: #8FB6D6; color: #0B0E12; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 11px 24px; text-decoration: none; transition: background 0.2s; border-radius: 2px; }
+    .nav-cta:hover { background: #BCDAF0; }
+    .nav-links { display: flex; gap: 34px; }
+    .nav-link { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; font-family: 'Manrope', sans-serif; font-weight: 500; }
+    .nav-link:hover { color: #8FB6D6; }
+
+    .gold-line { width: 48px; height: 2px; background: #8FB6D6; }
+    .label { font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8FB6D6; font-weight: 600; }
+
+    /* Hero */
+    .hero { position: relative; height: 88vh; min-height: 640px; overflow: hidden; }
+    .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(10%) contrast(1.03); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(11,14,18,0.92) 28%, rgba(11,14,18,0.5) 72%, rgba(11,14,18,0.7) 100%); }
+
+    /* Feature / module cards */
+    .service-card { background: #13171D; border: 1px solid rgba(255,255,255,0.06); padding: 34px 30px; transition: border-color 0.25s, transform 0.25s; position: relative; }
+    .service-card:hover { border-color: rgba(143,182,214,0.45); transform: translateY(-3px); }
+    .service-icon { width: 46px; height: 46px; border: 1px solid rgba(143,182,214,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; border-radius: 2px; }
+
+    /* Course cards */
+    .course-card { background: #13171D; border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 32px 30px; display: flex; flex-direction: column; transition: border-color 0.25s, transform 0.25s; }
+    .course-card:hover { border-color: rgba(143,182,214,0.45); transform: translateY(-3px); }
+    .course-card.featured { border-color: rgba(143,182,214,0.4); background: linear-gradient(180deg, #171d25 0%, #13171D 100%); }
+    .course-badge { display: inline-block; font-family: 'Manrope', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #0B0E12; background: #8FB6D6; padding: 4px 10px; border-radius: 2px; font-weight: 700; }
+    .date-pill { font-family: 'Manrope', sans-serif; font-size: 12px; color: rgba(255,255,255,0.7); background: rgba(143,182,214,0.08); border: 1px solid rgba(143,182,214,0.18); border-radius: 999px; padding: 5px 13px; }
+
+    .stat-num { font-family: 'Manrope', sans-serif; font-size: 46px; font-weight: 800; color: #8FB6D6; line-height: 1; letter-spacing: -0.03em; }
+
+    .contact-card { background: #13171D; border: 1px solid rgba(255,255,255,0.07); padding: 26px 28px; border-radius: 3px; }
+
+    /* Form */
+    .field-label { font-family: 'Manrope', sans-serif; font-size: 12px; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); font-weight: 600; margin-bottom: 8px; display: block; }
+    .field { width: 100%; background: #0B0E12; border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; color: #E6EBF0; font-family: 'Inter', sans-serif; font-size: 15px; padding: 13px 15px; transition: border-color 0.2s; }
+    .field:focus { outline: none; border-color: #8FB6D6; }
+    .field::placeholder { color: rgba(255,255,255,0.3); }
+    select.field { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%238FB6D6' stroke-width='2' viewBox='0 0 24 24'><path d='M6 9l6 6 6-6'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 42px; }
+    .btn-submit { background: #8FB6D6; color: #0B0E12; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; padding: 15px 34px; border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s; }
+    .btn-submit:hover { background: #BCDAF0; }
+    .btn-submit:disabled { opacity: 0.55; cursor: default; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; color: #E6EBF0; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 16px; padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .faq-q span.plus { color: #8FB6D6; font-size: 22px; line-height: 1; transition: transform 0.25s; }
+    .faq-q[aria-expanded="true"] span.plus { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-a p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; padding: 0 0 22px; margin: 0; }
+
+    /* Reveal-on-scroll */
+    html.reveal-ready [data-animate] { opacity: 0; transform: translateY(28px); transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    html.reveal-ready [data-animate].in { opacity: 1; transform: none; }
+    html.reveal-ready [data-stagger] > * { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    html.reveal-ready [data-stagger].in > * { opacity: 1; transform: none; }
+    html.reveal-ready [data-stagger].in > *:nth-child(2) { transition-delay: 0.1s; }
+    html.reveal-ready [data-stagger].in > *:nth-child(3) { transition-delay: 0.2s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      [data-animate], [data-stagger] > * { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar" id="navbar">
+  <a href="../" class="nav-logo">Trimmeren</a>
+  <div class="nav-links hidden md:flex">
+    <a href="#om" class="nav-link">Om kurset</a>
+    <a href="#laerer" class="nav-link">Hva du lærer</a>
+    <a href="#kurs" class="nav-link">Kurs &amp; datoer</a>
+    <a href="../#top" class="nav-link">Barbershopen</a>
+  </div>
+  <a href="#pamelding" class="nav-cta">Meld deg på</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <img src="../images/setmore/g2.webp" alt="Lokalet hos Trimmeren der akademiet holder til" class="hero-img" />
+  <div class="hero-overlay"></div>
+  <div class="absolute inset-0 flex items-center" style="padding: 0 6%; padding-top: 66px;">
+    <div data-animate style="max-width: 660px;">
+      <p class="label mb-6">Trimmernakademiet · Svelvikveien, Drammen</p>
+      <h1 class="font-display font-extrabold text-white mb-6" style="font-size: clamp(42px, 6.5vw, 84px); line-height: 0.98; letter-spacing: -0.03em;">
+        Lær faget.<br/><span style="color: #8FB6D6;">Bli barberer.</span>
+      </h1>
+      <p class="mb-9" style="font-size: 17px; color: rgba(255,255,255,0.68); line-height: 1.7; max-width: 480px;">
+        Trimmernakademiet er kurset for deg som vil lære å klippe skikkelig. Fra saks og maskin til fade og skjeggforming – lært hands-on av barbererne som står i stolen hver dag.
+      </p>
+      <div class="flex gap-4 flex-wrap items-center">
+        <a href="#pamelding" class="nav-cta" style="font-size: 13px; padding: 15px 34px;">Meld deg på</a>
+        <a href="#kurs" style="border: 1px solid rgba(143,182,214,0.4); color: #8FB6D6; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 15px 30px; text-decoration: none; border-radius: 2px;">Se kurs &amp; datoer</a>
+      </div>
+      <div class="mt-9 flex items-center gap-3" style="color: rgba(255,255,255,0.6); font-size: 14px;">
+        <span style="color:#8FB6D6; letter-spacing: 2px;">★★★★★</span>
+        <span>Undervist av barbererne bak <strong style="color:#fff;">5,0</strong> på Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OM KURSET -->
+<section id="om" class="px-6" style="background: #0B0E12; padding-top: 120px; padding-bottom: 120px;">
+  <div class="max-w-3xl mx-auto text-center">
+    <div data-animate>
+      <p class="label mb-4">Hva er Trimmernakademiet?</p>
+      <div class="gold-line mx-auto mb-6"></div>
+      <h2 class="font-display font-extrabold text-white mb-6" style="font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.03em; line-height: 1.12;">Et ekte fag, lært av folk som lever av det.</h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.85; margin-bottom: 20px;">
+        Vi startet akademiet fordi vi selv skulle ønske noe sånt fantes da vi begynte: små grupper, ekte modeller og barberere som faktisk gidder å forklare hvorfor et klipp sitter – ikke bare hvordan. Ingen store klasser, ingen teori for teoriens skyld.
+      </p>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.85;">
+        Enten du vurderer barberfaget som yrke, vil klippe kompisene skikkelig, eller bare er nysgjerrig – du får saks og maskin i hånda fra dag én.
+      </p>
+    </div>
+  </div>
+  <div data-stagger class="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 mt-16 text-center">
+    <div>
+      <div class="stat-num">6</div>
+      <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-top: 8px;">Maks deltakere per kull</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-top: 8px;">Praktisk – på ekte modeller</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-top: 8px;">Kurs å velge mellom</div>
+    </div>
+  </div>
+</section>
+
+<!-- HVA DU LÆRER -->
+<section id="laerer" class="px-6" style="background: #13171D; padding-top: 120px; padding-bottom: 120px;">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="mb-16">
+      <p class="label mb-4">Pensum</p>
+      <div class="gold-line mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.03em;">Hva du lærer</h2>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-px" style="background: rgba(255,255,255,0.05);">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M6 3v18M6 12h12M18 3v18"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Saks &amp; maskin</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Riktig grep, klippeteknikk og hvordan du bygger en frisyre lag for lag. Grunnmuren alt annet står på.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M4 18 18 4M9 4h9v9"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Fade &amp; overganger</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Skin fade, taper og de myke overgangene som skiller en hjemmeklipp fra en profesjonell. Vi tar det steg for steg.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M4 6c4 0 6 2 8 2s4-2 8-2M4 6c0 6 3 10 8 12 5-2 8-6 8-12"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Skjeggforming</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Linjer, trimming og forming som kler ansiktet – med barberkniv og varmt håndkle til slutt.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Hygiene &amp; utstyr</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Rengjøring, desinfeksjon og stell av utstyret ditt. Trygt for kunden, lengre liv på saksene.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Kundebehandling</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Konsultasjon, lese kundens ønsker og skape stemningen som gjør at folk kommer tilbake.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#8FB6D6" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2" style="font-size: 19px;">Praksis på modeller</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7;">Ekte klipp på ekte hoder, med en barberer ved siden av deg hele veien. Det er her det sitter seg fast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KURS & DATOER -->
+<section id="kurs" class="px-6" style="background: #0B0E12; padding-top: 120px; padding-bottom: 120px;">
+  <div class="max-w-6xl mx-auto">
+    <div data-animate class="text-center mb-14">
+      <p class="label mb-4">Høsten 2026</p>
+      <div class="gold-line mx-auto mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(28px, 4vw, 46px); letter-spacing: -0.03em;">Kurs &amp; datoer</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.5);margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;">Alle kurs holdes i lokalet på Svelvikveien 61d. Utstyr låner du av oss underveis.</p>
+    </div>
+    <div data-stagger class="grid md:grid-cols-3 gap-6">
+
+      <!-- Helgekurs -->
+      <div class="course-card">
+        <h3 class="font-display font-bold text-white mb-1" style="font-size: 22px;">Helgekurs</h3>
+        <p style="font-size:13px;color:#8FB6D6;font-family:'Manrope',sans-serif;font-weight:600;margin-bottom:18px;">Intro til klipp</p>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 22px;">En helg som gir deg grunnleggende klippeteknikk og et første ordentlig klipp under beltet. Perfekt for nybegynnere.</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="date-pill">6.–7. sep</span>
+          <span class="date-pill">4.–5. okt</span>
+          <span class="date-pill">8.–9. nov</span>
+        </div>
+        <ul style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.9;list-style:none;padding:0;margin:0 0 26px;">
+          <li>· Lør &amp; søn, kl. 10–16</li>
+          <li>· Ingen forkunnskaper</li>
+          <li>· Maks 6 deltakere</li>
+        </ul>
+        <div style="margin-top:auto;">
+          <p class="font-display font-extrabold" style="color:#8FB6D6;font-size:26px;margin-bottom:16px;">2 900 kr</p>
+          <a href="#pamelding" data-course="Helgekurs – Intro til klipp" class="nav-cta js-pick" style="display:block;text-align:center;font-size:12px;padding:13px;">Velg dette kurset</a>
+        </div>
+      </div>
+
+      <!-- Grunnkurs (featured) -->
+      <div class="course-card featured">
+        <span class="course-badge mb-4" style="align-self:flex-start;">Mest populær</span>
+        <h3 class="font-display font-bold text-white mb-1" style="font-size: 22px;">Grunnkurs</h3>
+        <p style="font-size:13px;color:#8FB6D6;font-family:'Manrope',sans-serif;font-weight:600;margin-bottom:18px;">6 uker · kveldskurs</p>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 22px;">Hele håndverket over seks uker: klipp, fade, skjegg og kundebehandling. Du går fra kurset med et ekte grunnlag i faget.</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="date-pill">Oppstart 16. sep</span>
+        </div>
+        <ul style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.9;list-style:none;padding:0;margin:0 0 26px;">
+          <li>· Tirsdager, kl. 17.30–20.30</li>
+          <li>· Praksis på modeller hver uke</li>
+          <li>· Maks 6 deltakere</li>
+          <li>· Kursbevis ved fullført</li>
+        </ul>
+        <div style="margin-top:auto;">
+          <p class="font-display font-extrabold" style="color:#8FB6D6;font-size:26px;margin-bottom:16px;">9 900 kr</p>
+          <a href="#pamelding" data-course="Grunnkurs – 6 uker" class="nav-cta js-pick" style="display:block;text-align:center;font-size:12px;padding:13px;">Velg dette kurset</a>
+        </div>
+      </div>
+
+      <!-- Fordypning -->
+      <div class="course-card">
+        <h3 class="font-display font-bold text-white mb-1" style="font-size: 22px;">Fordypning</h3>
+        <p style="font-size:13px;color:#8FB6D6;font-family:'Manrope',sans-serif;font-weight:600;margin-bottom:18px;">Fade &amp; skjegg</p>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 22px;">En intensiv dag der vi finpusser skin fade, overganger og skjeggdetaljer. For deg som allerede kan grunnlaget.</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="date-pill">18. okt</span>
+          <span class="date-pill">29. nov</span>
+        </div>
+        <ul style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.9;list-style:none;padding:0;margin:0 0 26px;">
+          <li>· Lørdag, kl. 10–15</li>
+          <li>· Krever litt erfaring</li>
+          <li>· Maks 5 deltakere</li>
+        </ul>
+        <div style="margin-top:auto;">
+          <p class="font-display font-extrabold" style="color:#8FB6D6;font-size:26px;margin-bottom:16px;">3 900 kr</p>
+          <a href="#pamelding" data-course="Fordypning – Fade &amp; skjegg" class="nav-cta js-pick" style="display:block;text-align:center;font-size:12px;padding:13px;">Velg dette kurset</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="text-center" style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:26px;line-height:1.7;">Plassene fylles fortløpende. Meld interesse i skjemaet under, så bekrefter vi plass og betaling på e-post.</p>
+  </div>
+</section>
+
+<!-- PÅMELDING -->
+<section id="pamelding" class="px-6" style="background: #13171D; padding-top: 110px; padding-bottom: 110px; border-top: 1px solid rgba(143,182,214,0.1);">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
+    <div data-animate>
+      <p class="label mb-4">Påmelding</p>
+      <div class="gold-line mb-6"></div>
+      <h2 class="font-display font-extrabold text-white mb-4" style="font-size: clamp(30px, 4vw, 48px); letter-spacing: -0.03em; line-height:1.1;">Sikre deg en plass</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.5);margin-bottom:32px;line-height:1.7;">Fyll ut skjemaet, så tar vi kontakt for å bekrefte plass og avtale betaling. Uforpliktende å melde interesse.</p>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="contact-card">
+          <p class="label mb-2" style="font-size:10px;">Hvor</p>
+          <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Svelvikveien 61d<br/>3039 Drammen</p>
+        </div>
+        <div class="contact-card">
+          <p class="label mb-2" style="font-size:10px;">Spørsmål?</p>
+          <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;">90 95 79 94<br/><a href="mailto:trimmerendrammen@gmail.com" style="color:rgba(255,255,255,0.7);text-decoration:none;">trimmerendrammen@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="flex gap-5 mt-6">
+        <a href="https://www.instagram.com/trimmeren_drammen/" target="_blank" rel="noopener" class="nav-link">Instagram</a>
+        <a href="https://www.tiktok.com/@trimmernbarbershop" target="_blank" rel="noopener" class="nav-link">TikTok</a>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div data-animate>
+      <form id="pameldingForm" class="contact-card" style="padding: 30px 30px 34px;">
+        <div class="mb-5">
+          <label class="field-label" for="navn">Navn</label>
+          <input class="field" type="text" id="navn" name="navn" placeholder="Ola Nordmann" required />
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-5">
+          <div>
+            <label class="field-label" for="epost">E-post</label>
+            <input class="field" type="email" id="epost" name="epost" placeholder="ola@epost.no" required />
+          </div>
+          <div>
+            <label class="field-label" for="telefon">Telefon</label>
+            <input class="field" type="tel" id="telefon" name="telefon" placeholder="900 00 000" required />
+          </div>
+        </div>
+        <div class="mb-5">
+          <label class="field-label" for="kursvalg">Hvilket kurs?</label>
+          <select class="field" id="kursvalg" name="kurs" required>
+            <option value="" disabled selected>Velg kurs …</option>
+            <option value="Helgekurs – Intro til klipp">Helgekurs – Intro til klipp (2 900 kr)</option>
+            <option value="Grunnkurs – 6 uker">Grunnkurs – 6 uker (9 900 kr)</option>
+            <option value="Fordypning – Fade &amp; skjegg">Fordypning – Fade &amp; skjegg (3 900 kr)</option>
+            <option value="Vet ikke ennå / vil ha råd">Vet ikke ennå – vil ha råd</option>
+          </select>
+        </div>
+        <div class="mb-5">
+          <label class="field-label" for="erfaring">Erfaringsnivå</label>
+          <select class="field" id="erfaring" name="erfaring">
+            <option value="" disabled selected>Velg …</option>
+            <option value="Nybegynner">Helt fersk</option>
+            <option value="Litt erfaring">Har klippet litt selv</option>
+            <option value="Erfaren">Klipper allerede jevnlig</option>
+          </select>
+        </div>
+        <div class="mb-6">
+          <label class="field-label" for="melding">Melding (valgfritt)</label>
+          <textarea class="field" id="melding" name="melding" rows="3" placeholder="Noe du lurer på, eller ønsker om dato?"></textarea>
+        </div>
+
+        <!-- FormSubmit-innstillinger -->
+        <input type="hidden" name="_subject" value="Ny påmelding – Trimmernakademiet" />
+        <input type="text" name="_honey" style="display:none" />
+
+        <button type="submit" class="btn-submit w-full" id="submitBtn">Send påmelding</button>
+        <p id="formStatus" style="font-size:13px;line-height:1.6;margin-top:16px;min-height:20px;"></p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.32);margin-top:6px;line-height:1.6;">Ved å sende inn samtykker du til at vi kontakter deg om påmeldingen. Vi deler ikke opplysningene dine.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="px-6" style="background: #0B0E12; padding-top: 100px; padding-bottom: 110px;">
+  <div class="max-w-3xl mx-auto">
+    <div data-animate class="text-center mb-12">
+      <p class="label mb-4">Ofte spurt</p>
+      <div class="gold-line mx-auto mb-6"></div>
+      <h2 class="font-display font-extrabold text-white" style="font-size: clamp(26px, 3.5vw, 40px); letter-spacing: -0.03em;">Spørsmål &amp; svar</h2>
+    </div>
+    <div data-animate>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Må jeg ha erfaring fra før?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Nei. Helgekurset og grunnkurset er lagt opp for helt ferske. Fordypningen forutsetter at du kan grunnleggende klipp fra før.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Trenger jeg eget utstyr?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Nei, du låner saks, maskin og trimmer av oss på kurset. Vil du kjøpe eget utstyr etterpå, hjelper vi deg gjerne med å velge riktig.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Hvem klipper vi på?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Vi stiller med modeller på øvingsdagene, så du får klippe på ekte hoder med en barberer ved siden av deg hele veien.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Får jeg noe bevis på kurset?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Fullfører du grunnkurset, får du et kursbevis fra Trimmernakademiet. Merk at dette er et hobby- og introkurs, ikke en formell fagutdanning eller svennebrev.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Hvordan betaler jeg?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Du melder interesse i skjemaet, så bekrefter vi ledig plass og sender betalingsinfo på e-post. Plassen er reservert når betalingen er registrert.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#080A0D;border-top:1px solid rgba(255,255,255,0.05);padding:40px 6%;">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <a href="../" class="nav-logo">Trimmeren</a>
+    <p style="font-size:12px;color:rgba(255,255,255,0.28);letter-spacing:0.05em;">© 2026 Trimmeren Barbershop · Svelvikveien 61d, Drammen</p>
+    <div style="display:flex;gap:22px;">
+      <a href="../#tjenester" class="nav-link">Barbershopen</a>
+      <a href="#kurs" class="nav-link">Kurs</a>
+      <a href="#pamelding" class="nav-link">Påmelding</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal-on-scroll
+  if (document.documentElement.classList.contains('reveal-ready')) {
+    const els = document.querySelectorAll('[data-animate], [data-stagger]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach((el) => io.observe(el));
+    } else {
+      els.forEach((el) => el.classList.add('in'));
+    }
+  }
+
+  // "Velg dette kurset" -> forhåndsvelg i skjemaet
+  document.querySelectorAll('.js-pick').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const val = btn.getAttribute('data-course');
+      const sel = document.getElementById('kursvalg');
+      for (const opt of sel.options) {
+        if (opt.value === val) { sel.value = val; break; }
+      }
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach((q) => {
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') === 'true';
+      const a = q.nextElementSibling;
+      q.setAttribute('aria-expanded', String(!open));
+      a.style.maxHeight = open ? '0' : a.scrollHeight + 'px';
+    });
+  });
+
+  // Skjema -> FormSubmit (AJAX, holder brukeren på siden)
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/adrian.dietrichs2@gmail.com';
+  const form = document.getElementById('pameldingForm');
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (form._honey.value) return; // honeypot – bot fylte skjult felt
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sender …';
+    statusEl.style.color = 'rgba(255,255,255,0.6)';
+    statusEl.textContent = '';
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        form.reset();
+        statusEl.style.color = '#8FB6D6';
+        statusEl.textContent = 'Takk! Påmeldingen er sendt – vi tar kontakt for å bekrefte plassen din.';
+        submitBtn.textContent = 'Sendt ✓';
+      } else {
+        throw new Error(data.message || 'Feil');
+      }
+    } catch (err) {
+      statusEl.style.color = '#e88';
+      statusEl.innerHTML = 'Noe gikk galt. Prøv igjen, eller ring oss på <a href="tel:+4790957994" style="color:#8FB6D6;">90 95 79 94</a>.';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send påmelding';
+    }
+  });
+</script>
+</body>
+</html>
