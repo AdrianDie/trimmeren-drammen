@@ -499,19 +499,19 @@
     statusEl.textContent = '';
 
     const data = new FormData(form);
-    // Sendes til begge: regnearket er selve lista, FormSubmit gir e-postvarsel.
-    const results = await Promise.allSettled([
-      fetch(SHEET_ENDPOINT, { method: 'POST', body: data }),
-      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data }),
-    ]);
-    const anyOk = results.some((r) => r.status === 'fulfilled' && r.value.ok);
+    // E-postvarsel er best-effort i bakgrunnen – skal ikke la brukeren vente
+    // hvis FormSubmit er trege eller nede. Regnearket er selve lista og avgjør
+    // om innsendingen regnes som vellykket.
+    fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data }).catch(() => {});
 
-    if (anyOk) {
+    try {
+      const res = await fetch(SHEET_ENDPOINT, { method: 'POST', body: data });
+      if (!res.ok) throw new Error('sheet-feil');
       form.reset();
       statusEl.style.color = '#8FB6D6';
       statusEl.textContent = 'Takk! Påmeldingen er sendt – vi tar kontakt for å bekrefte plassen din.';
       submitBtn.textContent = 'Sendt ✓';
-    } else {
+    } catch (err) {
       statusEl.style.color = '#e88';
       statusEl.innerHTML = 'Noe gikk galt. Prøv igjen, eller ring oss på <a href="tel:+4790957994" style="color:#8FB6D6;">90 95 79 94</a>.';
       submitBtn.disabled = false;
